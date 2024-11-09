@@ -18,3 +18,9 @@ const PRIVILEGES = {
     admin: ['read', 'write', 'execute'],
     viewer: ['read']
 };
+
+const loadClientPrivileges = () => {
+    const clientPrivileges = {};
+    const data = fs.readFileSync(FAJLL_INFO, 'utf8');
+    return clientPrivileges;
+};
