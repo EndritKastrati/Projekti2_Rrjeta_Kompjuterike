@@ -33,3 +33,7 @@ const loadClientPrivileges = () => {
     return clientPrivileges;
 };
 
+const hasPermission = (clientId, action) => {
+    const clientPrivilege = clients[clientId]?.privilege;
+    return PRIVILEGES[clientPrivilege]?.includes(action);
+};
