@@ -52,3 +52,33 @@ const promptUser = () => {
         });
     });
 };
+const sendMessage = (message) => {
+    console.log(`Duke derguar kerkese: "${message}" nga klienti me ID: "${clientId}"`);
+    client.send(message, SERVER_PORT, SERVER_IP, (err) => {
+        if (err) {
+            console.error('Gabim gjate dergimit te kerkeses:', err);
+            client.close();
+        }
+    });
+};
+
+client.on('message', (msg) => {
+    const response = msg.toString();
+
+    if (response.startsWith('Privilegji:')) {
+        const privilege = response.split(':')[1].trim();
+        console.log(`Privilegji juaj eshte: ${privilege}`);
+        promptUser();
+    } else {
+        console.log(`Pergjigja nga serveri: ${response}`);
+        promptUser();
+    }
+});
+
+client.on('error', (err) => {
+    console.error(`Gabim ne klient: ${err}`);
+    client.close();
+});
+
+// Starton programi nga ky funksion duke kerkuar ID e klientit.
+promptClientId();
