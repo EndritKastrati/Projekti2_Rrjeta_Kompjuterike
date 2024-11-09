@@ -30,3 +30,13 @@ const promptClientId = () => {
         });
     });
 };
+
+
+const promptUser = () => {
+    rl.question('Jepni komanden qe deshironi (read, write, execute): ', (action) => {
+        if (!['read', 'write', 'execute'].includes(action)) {
+            console.log('Komand jo-valide. Ju lutem jepni vetem njeren nga komandat: "read", "write", ose "execute".');
+            return promptUser();
+        }
+
+        rl.question('Ju lutem jepni emrin e fajllit: ', (filename) => {
