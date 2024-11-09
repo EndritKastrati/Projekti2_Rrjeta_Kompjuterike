@@ -40,3 +40,15 @@ const promptUser = () => {
         }
 
         rl.question('Ju lutem jepni emrin e fajllit: ', (filename) => {
+            if (action === 'write') {
+                rl.question('Cka deshironi te shkruani: ', (content) => {
+                    const message = `${action} ${filename} ${content}`;
+                    sendMessage(message);
+                });
+            } else {
+                const message = `${action} ${filename}`;
+                sendMessage(message);
+            }
+        });
+    });
+};
