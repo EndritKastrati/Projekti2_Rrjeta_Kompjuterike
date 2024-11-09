@@ -16,3 +16,17 @@ let clientId;
 client.bind(() => {
     promptClientId();
 });
+
+const promptClientId = () => {
+    rl.question('Jepni ID tuaj: ', (id) => {
+        clientId = id;
+
+        // Dergon klientID te serveri me e kqyr a o admin a viewer.
+        client.send(`checkPrivilege ${clientId}`, SERVER_PORT, SERVER_IP, (err) => {
+            if (err) {
+                console.error('Error ne ID-ne tuaj:', err);
+                client.close();
+            }
+        });
+    });
+};
