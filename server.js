@@ -22,5 +22,10 @@ const PRIVILEGES = {
 const loadClientPrivileges = () => {
     const clientPrivileges = {};
     const data = fs.readFileSync(FAJLL_INFO, 'utf8');
+
+    data.split('\n').forEach(line => {
+        const [clientId, privilege] = line.trim().split(' ');
+    });
+
     return clientPrivileges;
 };
