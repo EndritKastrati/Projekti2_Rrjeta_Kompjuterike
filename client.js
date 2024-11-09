@@ -9,3 +9,10 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+let clientId;
+
+// Lidhja e klientit ne nje port random.
+client.bind(() => {
+    promptClientId();
+});
