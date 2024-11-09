@@ -37,3 +37,8 @@ const hasPermission = (clientId, action) => {
     const clientPrivilege = clients[clientId]?.privilege;
     return PRIVILEGES[clientPrivilege]?.includes(action);
 };
+
+server.on('listening', () => {
+    const address = server.address();
+    console.log(`Serveri po degjon ne portin: "${address.port}"`);
+});
