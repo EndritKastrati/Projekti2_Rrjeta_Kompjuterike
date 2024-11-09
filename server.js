@@ -8,3 +8,13 @@ const MAX_KONEKTIME = 1;
 const KOHA_JOAKTIVE = 20000;
 const LOKACIONI_FAJLLAV = './test-files';
 const FAJLL_INFO = path.join(LOKACIONI_FAJLLAV, 'example.txt');
+
+const ADMIN_ID = '2025';  // vec me qit ID munet clienti mu kon ADMIN.
+
+let connections = 0;
+const clients = {};
+
+const PRIVILEGES = {
+    admin: ['read', 'write', 'execute'],
+    viewer: ['read']
+};
