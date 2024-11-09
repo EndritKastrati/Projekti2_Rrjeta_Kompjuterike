@@ -25,7 +25,11 @@ const loadClientPrivileges = () => {
 
     data.split('\n').forEach(line => {
         const [clientId, privilege] = line.trim().split(' ');
+        if (clientId && privilege) {
+            clientPrivileges[clientId] = privilege;
+        }
     });
 
     return clientPrivileges;
 };
+
