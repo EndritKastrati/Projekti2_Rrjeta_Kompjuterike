@@ -1,0 +1,9 @@
+[2024-11-08T15:26:45.778Z] 127.0.0.1 kerkoi: write example2.txt testttttt
+[2024-11-08T15:27:04.120Z] 127.0.0.1 kerkoi: read example2.txt
+[2024-11-08T15:33:35.767Z] 127.0.0.1 kerkoi: write example.txt TESTTT
+[2024-11-08T15:34:34.204Z] 127.0.0.1 kerkoi: read bb/txt
+[2024-11-08T15:34:54.097Z] 127.0.0.1 kerkoi: write example.txt dddd
+[2024-11-08T15:37:02.269Z] 127.0.0.1 kerkoi: komanda: write - fajlli: example2.txt - info: dd
+[2024-11-08T15:38:45.081Z] 127.0.0.1 kerkoi: write example2.txt dicka
+[2024-11-08T15:41:20.099Z] 127.0.0.1 kerkoi: write example.txt dd
+[2024-11-08T15:41:31.471Z] 127.0.0.1 kerkoi: read example.txt

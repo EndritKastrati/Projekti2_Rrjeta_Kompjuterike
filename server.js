@@ -109,5 +109,6 @@ server.on('message', (message, remote) => {
         server.send('Komand jo-valide. Perdorni: <action> <file>', remote.port, remote.address);
     }
 
-    
+    const timestamp = new Date().toISOString();
+    fs.appendFileSync('kerkesat.log', `[${timestamp}] ${clientId} kerkoi: ${messageStr}\n`);
 });
