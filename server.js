@@ -42,3 +42,13 @@ server.on('listening', () => {
     const address = server.address();
     console.log(`Serveri po degjon ne portin: "${address.port}"`);
 });
+
+server.on('message', (message, remote) => {
+    const clientId = `${remote.address}:${remote.port}`;
+    const messageStr = message.toString();
+
+    if (!clients[clientId]) {
+        if (connections >= MAX_KONEKTIME) {
+            server.send('U arrit numri maksimal i lidhjeve ne server. Ju lutem provoni me vone.', remote.port, remote.address);
+            return;
+        }
