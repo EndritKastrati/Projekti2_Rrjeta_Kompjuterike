@@ -112,3 +112,16 @@ server.on('message', (message, remote) => {
     const timestamp = new Date().toISOString();
     fs.appendFileSync('kerkesat.log', `[${timestamp}] ${clientId} kerkoi: ${messageStr}\n`);
 });
+
+setInterval(() => {
+    const now = Date.now();
+    for (const clientId in clients) {
+        if (now - clients[clientId].lastSeen > KOHA_JOAKTIVE) {
+            console.log(`Duke hequr klientin jo-aktiv me ID: ${clientId}`);
+            delete clients[clientId];
+            connections--;
+        }
+    }
+}, 1);
+
+server.bind(PORTI);
