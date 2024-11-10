@@ -32,7 +32,7 @@ Ky projekt implementon një sistem server-klient bazuar në UDP-protokollin ku p
 ## Tools/Kerkesat
 
 - Node.js: Sigurohuni që Node.js është instaluar për të ekzekutuar kodin.
-- File System: Fajlli example.txt duhet të ekzistojë në dosjen ./test-files.
+- Folder/Files: Fajlli example.txt duhet të ekzistojë në folderin ./test-files.
 
 
 ## Marrja e projektit
