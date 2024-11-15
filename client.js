@@ -18,30 +18,39 @@ client.bind(() => {
 });
 
 const promptClientId = () => {
-    rl.question('Jepni ID tuaj: ', (id) => {
+
+    const promptText = '\x1b[32mJepni ID tuaj:\x1b[0m'; // ndryshimi i ngjyres ne terminal.
+    const promptText2= '\x1b[31mError ne ID-ne tuaj:\x1b[0m';
+
+    rl.question(promptText+ ' ', (id) => {
         clientId = id;
 
         // Dergon klientID te serveri me e kqyr a o admin a viewer.
         client.send(`checkPrivilege ${clientId}`, SERVER_PORT, SERVER_IP, (err) => {
             if (err) {
-                console.error('Error ne ID-ne tuaj:', err);
+                console.error(promptText2 + '', err);
                 client.close();
             }
         });
     });
 };
 
+const promptText3= '\x1b[31mKomand jo-valide. Ju lutem jepni vetem njeren nga komandat: "read", "write", ose "execute".\x1b[0m';
 
+const promptText6= '\x1b[32mJepni komanden qe deshironi (read, write, execute):\x1b[0m';
 const promptUser = () => {
-    rl.question('Jepni komanden qe deshironi (read, write, execute): ', (action) => {
+    rl.question(promptText6 + ' ', (action) => {
         if (!['read', 'write', 'execute'].includes(action)) {
-            console.log('Komand jo-valide. Ju lutem jepni vetem njeren nga komandat: "read", "write", ose "execute".');
+            console.log(promptText3 + ' ');
             return promptUser();
         }
 
-        rl.question('Ju lutem jepni emrin e fajllit: ', (filename) => {
+        const promptText4= '\x1b[32mJu lutem jepni emrin e fajllit:\x1b[0m';
+        const promptText5= '\x1b[32mCka deshironi te shkruani:\x1b[0m';
+
+        rl.question(promptText4 + ' ', (filename) => {
             if (action === 'write') {
-                rl.question('Cka deshironi te shkruani: ', (content) => {
+                rl.question(promptText5 + ' ', (content) => {
                     const message = `${action} ${filename} ${content}`;
                     sendMessage(message);
                 });
@@ -65,9 +74,11 @@ const sendMessage = (message) => {
 client.on('message', (msg) => {
     const response = msg.toString();
 
+    const promptText3= '\x1b[32mPrivilegji juaj eshte:\x1b[0m';
+
     if (response.startsWith('Privilegji:')) {
         const privilege = response.split(':')[1].trim();
-        console.log(`Privilegji juaj eshte: ${privilege}`);
+        console.log(promptText3 + ` ${privilege}`);
         promptUser();
     } else {
         console.log(`Pergjigja nga serveri: ${response}`);

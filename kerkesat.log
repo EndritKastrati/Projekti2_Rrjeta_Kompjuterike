@@ -8,3 +8,4 @@
 [2024-11-08T15:41:20.099Z] 127.0.0.1 kerkoi: write example.txt dd
 [2024-11-08T15:41:31.471Z] 127.0.0.1 kerkoi: read example.txt
 [2024-11-10T14:03:11.662Z] 127.0.0.1:34448 kerkoi: read example.txt
+[2024-11-14T16:11:18.567Z] 127.0.0.1:43714 kerkoi: execute example.txt
